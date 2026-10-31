@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TaskFlow.Data/TaskFlow.Data.csproj" Id="404bc075-3e9d-431c-801f-1f7ac758049b" />
+  <Project Path="TaskFlow.Services/TaskFlow.Services.csproj" Id="8db74916-c9d3-42d3-9871-baca30f77d94" />
+  <Project Path="TaskFlow.Web/TaskFlow.Web.csproj" />
+</Solution>
