@@ -1,4 +1,4 @@
-namespace TaskFlow.Web.Models
+﻿namespace TaskFlow.Web.Models
 {
     public class ErrorViewModel
     {
