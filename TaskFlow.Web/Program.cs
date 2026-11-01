@@ -21,6 +21,7 @@ namespace TaskFlow.Web
             );
 
             builder.Services.AddScoped<TaskFlow.Web.Mock.IWorkspaceUiService, TaskFlow.Web.Mock.FakeWorkspaceUiService>();
+            builder.Services.AddScoped<TaskFlow.Web.Mock.ITeamUiService, TaskFlow.Web.Mock.FakeTeamUiService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
