@@ -1,0 +1,73 @@
+﻿@model TaskFlow.Web.ViewModels.Teams.TeamDetailsVM
+@using TaskFlow.Web.Mock
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="mb-4">
+    <a asp-controller="Workspaces" asp-action="Details" asp-route-id="@Model.WorkspaceId" class="small">&larr; Back to workspace</a>
+    <h2 class="mb-1">@Model.Name</h2>
+    <p class="text-muted">@(Model.Description ?? "No description")</p>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="mb-3">Invite member</h5>
+        <form asp-action="InviteMember" method="post" class="row g-2">
+            <input type="hidden" name="TeamId" value="@Model.Id" />
+            <div class="col-md-6">
+                <input type="email" name="Email" class="form-control" placeholder="member@email.com" required />
+            </div>
+            <div class="col-md-4">
+                <select name="Role" class="form-select" asp-items="Html.GetEnumSelectList<MockRole>()"></select>
+            </div>
+            <div class="col-md-2 d-grid">
+                <button type="submit" class="btn btn-primary">Invite</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h5 class="mb-3">Members (@Model.Members.Count)</h5>
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead>
+            <tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th>Last active</th><th></th></tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model.Members)
+            {
+                <tr>
+                    <td>@m.FullName</td>
+                    <td>@m.Email</td>
+                    <td>
+                        <form asp-action="ChangeRole" method="post">
+                            <input type="hidden" name="teamId" value="@Model.Id" />
+                            <input type="hidden" name="memberId" value="@m.Id" />
+                            <select name="role" class="form-select form-select-sm" onchange="this.form.submit()"
+                                    asp-items="Html.GetEnumSelectList<MockRole>().Select(i => { i.Selected = i.Value == ((int)m.Role).ToString(); return i; })"></select>
+                        </form>
+                    </td>
+                    <td>@m.JoinedAt.ToString("yyyy-MM-dd")</td>
+                    <td>@m.LastActiveAt.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td class="text-end">
+                        <form asp-action="RemoveMember" method="post" onsubmit="return confirm('Remove this member?')">
+                            <input type="hidden" name="teamId" value="@Model.Id" />
+                            <input type="hidden" name="memberId" value="@m.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

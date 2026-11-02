@@ -6,33 +6,58 @@ namespace TaskFlow.Web.Controllers;
 
 public class WorkspacesController : Controller
 {
-    private readonly IWorkspaceUiService _service;
+    private readonly IWorkspaceUiService _workspaces;
+    private readonly ITeamUiService _teams;
 
-    public WorkspacesController(IWorkspaceUiService service)
+    public WorkspacesController(IWorkspaceUiService workspaces, ITeamUiService teams)
     {
-        _service = service;
+        _workspaces = workspaces;
+        _teams = teams;
     }
 
-    public IActionResult Index()
+    public IActionResult Index() => View(_workspaces.GetAll());
+
+    public IActionResult Details(int id)
     {
-        return View(_service.GetAll());
+        var w = _workspaces.GetById(id);
+        if (w == null) return NotFound();
+
+        return View(new WorkspaceDetailsVM
+        {
+            Id = w.Id,
+            Name = w.Name,
+            Description = w.Description,
+            CreatedAt = w.CreatedAt,
+            Teams = _teams.GetByWorkspace(id)
+        });
     }
 
     [HttpGet]
-    public IActionResult Create()
-    {
-        return View(new WorkspaceFormVM());
-    }
+    public IActionResult Create() => View(new WorkspaceFormVM());
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
+    [HttpPost, ValidateAntiForgeryToken]
     public IActionResult Create(WorkspaceFormVM model)
     {
-        if (!ModelState.IsValid)
-            return View(model);
-
-        _service.Create(model);
+        if (!ModelState.IsValid) return View(model);
+        _workspaces.Create(model);
         TempData["Success"] = "Workspace created successfully";
         return RedirectToAction(nameof(Index));
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var w = _workspaces.GetById(id);
+        if (w == null) return NotFound();
+        return View(new WorkspaceFormVM { Id = w.Id, Name = w.Name, Description = w.Description });
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    public IActionResult Edit(WorkspaceFormVM model)
+    {
+        if (!ModelState.IsValid) return View(model);
+        if (!_workspaces.Update(model)) return NotFound();
+        TempData["Success"] = "Workspace updated";
+        return RedirectToAction(nameof(Details), new { id = model.Id });
     }
 }

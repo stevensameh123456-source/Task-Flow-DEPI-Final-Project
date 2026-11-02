@@ -1,0 +1,47 @@
+﻿@model TaskFlow.Web.ViewModels.Workspaces.WorkspaceDetailsVM
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <a asp-action="Index" class="small">&larr; Workspaces</a>
+        <h2 class="mb-1">@Model.Name</h2>
+        <p class="text-muted mb-0">@(Model.Description ?? "No description")</p>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary">Edit</a>
+        <a asp-controller="Teams" asp-action="Create" asp-route-workspaceId="@Model.Id" class="btn btn-primary">+ New Team</a>
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<h4 class="mb-3">Teams</h4>
+@if (!Model.Teams.Any())
+{
+    <div class="alert alert-info">No teams yet. Create the first one.</div>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var t in Model.Teams)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@t.Name</h5>
+                        <p class="card-text text-muted">@(t.Description ?? "No description")</p>
+                        <span class="badge bg-info text-dark">@t.MembersCount Members</span>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a asp-controller="Teams" asp-action="Details" asp-route-id="@t.Id" class="btn btn-sm btn-outline-primary">Manage</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
