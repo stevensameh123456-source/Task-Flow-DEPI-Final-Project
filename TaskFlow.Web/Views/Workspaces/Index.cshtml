@@ -1,0 +1,40 @@
+﻿@model List<TaskFlow.Web.ViewModels.Workspaces.WorkspaceListItemVM>
+@{
+    ViewData["Title"] = "Workspaces";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Workspaces</h2>
+    <a asp-action="Create" class="btn btn-primary">+ New Workspace</a>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No workspaces yet. Create your first one.</div>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var w in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@w.Name</h5>
+                        <p class="card-text text-muted">@(w.Description ?? "No description")</p>
+                        <span class="badge bg-secondary me-1">@w.TeamsCount Teams</span>
+                        <span class="badge bg-info text-dark">@w.MembersCount Members</span>
+                    </div>
+                    <div class="card-footer text-muted small">
+                        Created @w.CreatedAt.ToString("yyyy-MM-dd")
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
