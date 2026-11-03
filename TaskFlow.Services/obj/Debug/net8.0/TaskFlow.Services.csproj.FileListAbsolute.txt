@@ -1,0 +1,16 @@
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\bin\Debug\net8.0\TaskFlow.Services.deps.json
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\bin\Debug\net8.0\TaskFlow.Services.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\bin\Debug\net8.0\TaskFlow.Services.pdb
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\bin\Debug\net8.0\TaskFlow.Data.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\bin\Debug\net8.0\TaskFlow.Data.pdb
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.csproj.AssemblyReference.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.AssemblyInfoInputs.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.AssemblyInfo.cs
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.csproj.CoreCompileInputs.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.sourcelink.json
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.E2D10F9B.Up2Date
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\refint\TaskFlow.Services.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\TaskFlow.Services.pdb
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Services\obj\Debug\net8.0\ref\TaskFlow.Services.dll
