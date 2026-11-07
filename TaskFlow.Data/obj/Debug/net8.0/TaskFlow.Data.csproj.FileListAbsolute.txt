@@ -1,0 +1,15 @@
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\bin\Debug\net8.0\TaskFlow.Data.deps.json
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\bin\Debug\net8.0\TaskFlow.Data.runtimeconfig.json
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\bin\Debug\net8.0\TaskFlow.Data.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\bin\Debug\net8.0\TaskFlow.Data.pdb
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.csproj.AssemblyReference.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.AssemblyInfoInputs.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.AssemblyInfo.cs
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.csproj.CoreCompileInputs.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.sourcelink.json
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\refint\TaskFlow.Data.dll
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.pdb
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\TaskFlow.Data.genruntimeconfig.cache
+C:\Users\Infotech\Desktop\dpi\TaskFlow.Data\obj\Debug\net8.0\ref\TaskFlow.Data.dll
