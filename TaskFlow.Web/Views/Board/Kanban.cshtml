@@ -1,0 +1,484 @@
+﻿@{
+    ViewData["Title"] = "Kanban Board";
+}
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/Kanban.css"
+          asp-append-version="true" />
+}
+
+<div class="kanban-page">
+
+    <!-- Page Header -->
+    <div class="kanban-header">
+
+        <div class="kanban-header-content">
+            <div class="kanban-breadcrumb">
+                <span>Workspace</span>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Tasks</span>
+            </div>
+
+            <h1 class="kanban-title">Kanban Board</h1>
+
+            <p class="kanban-subtitle">
+                Organize your work and track your team's progress.
+            </p>
+        </div>
+
+        <div class="kanban-header-actions">
+            <button type="button" class="kanban-btn">
+                <i class="fa-solid fa-filter"></i>
+                Filter
+            </button>
+
+            <button type="button" class="kanban-btn kanban-btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                <i class="fa-solid fa-plus"></i>
+                Add New Task
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- Board Toolbar -->
+    <div class="kanban-toolbar">
+
+        <div class="kanban-toolbar-left">
+            <div class="kanban-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search"
+                       id="kanbanSearch"
+                       placeholder="Search tasks..." />
+            </div>
+        </div>
+
+        <div class="kanban-toolbar-right">
+            <span class="kanban-subtitle">
+                <i class="fa-solid fa-grip-vertical"></i>
+                Drag tasks between columns
+            </span>
+        </div>
+
+    </div>
+
+
+    <!-- Kanban Board -->
+    <div class="kanban-board" id="kanbanBoard">
+
+        <!-- TO DO -->
+        <section class="kanban-column" id="toDo" data-column="todo">
+
+            <div class="kanban-column-header">
+                <h3 class="kanban-column-title">
+                    <span class="kanban-status-dot status-todo"></span>
+                    To Do
+                    <span class="kanban-column-count">2</span>
+                </h3>
+
+                <button class="kanban-column-menu" type="button">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div class="kanban-tasks">
+
+                <article class="kanban-card"
+                         draggable="true"
+                         data-task-id="1">
+
+                    <div class="kanban-card-top">
+                        <span class="kanban-card-category category-design">
+                            Design
+                        </span>
+
+                        <button class="kanban-card-menu" type="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <h4 class="kanban-card-title kanban-card-title-text">
+                        Create landing page design
+                    </h4>
+
+                    <p class="kanban-card-description kanban-card-desc-text">
+                        Design a modern and responsive landing page for TaskFlow.
+                    </p>
+
+                    <div class="kanban-card-footer">
+                        <span class="kanban-priority priority-high">
+                            <i class="fa-solid fa-flag"></i>
+                            High
+                        </span>
+
+                        <div class="kanban-card-meta">
+                            <span class="kanban-meta-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                Nov 05
+                            </span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="kanban-card"
+                         draggable="true"
+                         data-task-id="2">
+
+                    <div class="kanban-card-top">
+                        <span class="kanban-card-category category-research">
+                            Research
+                        </span>
+
+                        <button class="kanban-card-menu" type="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <h4 class="kanban-card-title kanban-card-title-text">
+                        Analyze user requirements
+                    </h4>
+
+                    <p class="kanban-card-description kanban-card-desc-text">
+                        Collect and organize the main project requirements.
+                    </p>
+
+                    <div class="kanban-card-footer">
+                        <span class="kanban-priority priority-medium">
+                            <i class="fa-solid fa-flag"></i>
+                            Medium
+                        </span>
+
+                        <div class="kanban-card-meta">
+                            <span class="kanban-meta-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                Nov 08
+                            </span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <button type="button" class="kanban-add-task" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                <i class="fa-solid fa-plus"></i>
+                Add Task
+            </button>
+
+        </section>
+
+
+        <!-- IN PROGRESS -->
+        <section class="kanban-column" id="progress" data-column="progress">
+
+            <div class="kanban-column-header">
+                <h3 class="kanban-column-title">
+                    <span class="kanban-status-dot status-progress"></span>
+                    In Progress
+                    <span class="kanban-column-count">2</span>
+                </h3>
+
+                <button class="kanban-column-menu" type="button">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div class="kanban-tasks">
+
+                <article class="kanban-card"
+                         draggable="true"
+                         data-task-id="3">
+
+                    <div class="kanban-card-top">
+                        <span class="kanban-card-category category-development">
+                            Development
+                        </span>
+
+                        <button class="kanban-card-menu" type="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <h4 class="kanban-card-title kanban-card-title-text">
+                        Build authentication system
+                    </h4>
+
+                    <p class="kanban-card-description kanban-card-desc-text">
+                        Implement login and registration functionality.
+                    </p>
+
+                    <div class="kanban-progress">
+                        <div class="kanban-progress-info">
+                            <span>Progress</span>
+                            <span>65%</span>
+                        </div>
+
+                        <div class="kanban-progress-track">
+                            <div class="kanban-progress-fill"
+                                 style="width: 65%"></div>
+                        </div>
+                    </div>
+
+                    <div class="kanban-card-footer">
+                        <span class="kanban-priority priority-high">
+                            <i class="fa-solid fa-flag"></i>
+                            High
+                        </span>
+
+                        <div class="kanban-card-meta">
+                            <span class="kanban-meta-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                Nov 10
+                            </span>
+                        </div>
+                    </div>
+
+                </article>
+
+
+                <article class="kanban-card"
+                         draggable="true"
+                         data-task-id="4">
+
+                    <div class="kanban-card-top">
+                        <span class="kanban-card-category category-design">
+                            Design
+                        </span>
+
+                        <button class="kanban-card-menu" type="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <h4 class="kanban-card-title kanban-card-title-text">
+                        Create dashboard UI
+                    </h4>
+
+                    <p class="kanban-card-description kanban-card-desc-text">
+                        Build the main dashboard interface and its components.
+                    </p>
+
+                    <div class="kanban-card-footer">
+                        <span class="kanban-priority priority-medium">
+                            <i class="fa-solid fa-flag"></i>
+                            Medium
+                        </span>
+
+                        <div class="kanban-card-meta">
+                            <span class="kanban-meta-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                Nov 12
+                            </span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <button type="button" class="kanban-add-task" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                <i class="fa-solid fa-plus"></i>
+                Add Task
+            </button>
+
+        </section>
+
+
+        <!-- REVIEW -->
+        <section class="kanban-column" id="review" data-column="review">
+
+            <div class="kanban-column-header">
+                <h3 class="kanban-column-title">
+                    <span class="kanban-status-dot status-review"></span>
+                    Review
+                    <span class="kanban-column-count">1</span>
+                </h3>
+
+                <button class="kanban-column-menu" type="button">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div class="kanban-tasks">
+
+                <article class="kanban-card"
+                         draggable="true"
+                         data-task-id="5">
+
+                    <div class="kanban-card-top">
+                        <span class="kanban-card-category category-development">
+                            Development
+                        </span>
+
+                        <button class="kanban-card-menu" type="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <h4 class="kanban-card-title kanban-card-title-text">
+                        Implement task management
+                    </h4>
+
+                    <p class="kanban-card-description kanban-card-desc-text">
+                        Review the task creation and update functionality.
+                    </p>
+
+                    <div class="kanban-card-footer">
+                        <span class="kanban-priority priority-medium">
+                            <i class="fa-solid fa-flag"></i>
+                            Medium
+                        </span>
+
+                        <div class="kanban-card-meta">
+                            <span class="kanban-meta-item">
+                                <i class="fa-regular fa-calendar"></i>
+                                Nov 14
+                            </span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <button type="button" class="kanban-add-task" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                <i class="fa-solid fa-plus"></i>
+                Add Task
+            </button>
+
+        </section>
+
+
+        <!-- DONE -->
+        <section class="kanban-column" id="done" data-column="done">
+
+            <div class="kanban-column-header">
+                <h3 class="kanban-column-title">
+                    <span class="kanban-status-dot status-done"></span>
+                    Done
+                    <span class="kanban-column-count">1</span>
+                </h3>
+
+                <button class="kanban-column-menu" type="button">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </button>
+            </div>
+
+            <div class="kanban-tasks">
+
+                <article class="kanban-card"
+                         draggable="true"
+                         data-task-id="6">
+
+                    <div class="kanban-card-top">
+                        <span class="kanban-card-category category-marketing">
+                            Marketing
+                        </span>
+
+                        <button class="kanban-card-menu" type="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                    </div>
+
+                    <h4 class="kanban-card-title kanban-card-title-text">
+                        Prepare project documentation
+                    </h4>
+
+                    <p class="kanban-card-description kanban-card-desc-text">
+                        Complete the initial project documentation.
+                    </p>
+
+                    <div class="kanban-card-footer">
+                        <span class="kanban-priority priority-low">
+                            <i class="fa-solid fa-flag"></i>
+                            Low
+                        </span>
+
+                        <div class="kanban-card-meta">
+                            <span class="kanban-meta-item">
+                                <i class="fa-solid fa-check-circle"></i>
+                                Completed
+                            </span>
+                        </div>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <button type="button" class="kanban-add-task" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                <i class="fa-solid fa-plus"></i>
+                Add Task
+            </button>
+
+        </section>
+
+    </div>
+
+    <!-- Modal إضافة مهمة جديدة مع تحديد الحالة (Status) -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg" style="background-color: var(--kanban-surface); color: var(--kanban-text); border-radius: 16px;">
+                <div class="modal-header border-bottom border-secondary-subtle px-4 py-3">
+                    <h5 class="modal-title fw-bold" id="addTaskModalLabel">
+                        <i class="fa-solid fa-circle-plus text-primary me-2"></i>Add New Task
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="addTaskForm">
+                        <div class="mb-3">
+                            <label for="taskTitle" class="form-label fw-semibold small">Task Title</label>
+                            <input type="text" class="form-control bg-transparent text-body border-secondary-subtle" id="taskTitle" required placeholder="e.g., Update user dashboard UI...">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDesc" class="form-label fw-semibold small">Description</label>
+                            <textarea class="form-control bg-transparent text-body border-secondary-subtle" id="taskDesc" rows="3" placeholder="Provide a brief description of the task..."></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="taskStatus" class="form-label fw-semibold small">Status</label>
+                                <select class="form-select bg-transparent text-body border-secondary-subtle" id="taskStatus">
+                                    <option value="toDo" selected>To Do</option>
+                                    <option value="progress">In Progress</option>
+                                    <option value="review">Review</option>
+                                    <option value="done">Done</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="taskCategory" class="form-label fw-semibold small">Category</label>
+                                <select class="form-select bg-transparent text-body border-secondary-subtle" id="taskCategory">
+                                    <option value="Development" selected>Development</option>
+                                    <option value="Design">Design</option>
+                                    <option value="Research">Research</option>
+                                    <option value="Marketing">Marketing</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="taskPriority" class="form-label fw-semibold small">Priority</label>
+                                <select class="form-select bg-transparent text-body border-secondary-subtle" id="taskPriority">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-top border-secondary-subtle px-4 py-3">
+                    <button type="button" class="kanban-btn" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="kanban-btn kanban-btn-primary" id="saveTaskBtn">Save Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="~/js/Kanban.js" asp-append-version="true"></script>
+}

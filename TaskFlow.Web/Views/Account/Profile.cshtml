@@ -1,0 +1,576 @@
+﻿@{
+    ViewData["Title"] = "My Profile";
+}
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/Profile.css"
+          asp-append-version="true" />
+}
+
+<div class="profile-page">
+
+    <!-- Profile Header -->
+    <div class="profile-page-header">
+        <div>
+            <div class="profile-breadcrumb">
+                <span>Workspace</span>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Account</span>
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Profile</span>
+            </div>
+
+            <h1 class="profile-page-title">My Profile</h1>
+
+            <p class="profile-page-subtitle">
+                Manage your personal information and account settings.
+            </p>
+        </div>
+
+        <div class="profile-header-status">
+            <span class="profile-status-dot"></span>
+            Account Active
+        </div>
+    </div>
+
+
+    <!-- Profile Layout -->
+    <div class="profile-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="profile-sidebar">
+
+            <!-- User Card -->
+            <div class="profile-user-card">
+
+                <div class="profile-cover"></div>
+
+                <div class="profile-avatar-wrapper">
+
+                    <img src="https://ui-avatars.com/api/?name=Steven+Sameh&background=7567E8&color=fff&size=160"
+                         id="profileAvatar"
+                         alt="Profile picture"
+                         class="profile-avatar" />
+
+                    <label for="avatarInput"
+                           class="profile-avatar-edit"
+                           title="Change profile picture">
+
+                        <i class="fa-solid fa-camera"></i>
+                    </label>
+
+                    <input type="file"
+                           id="avatarInput"
+                           accept="image/*"
+                           hidden />
+
+                </div>
+
+                <div class="profile-user-details">
+                    <h2 id="sidebarName">Steven Sameh</h2>
+
+                    <p id="sidebarJob">Frontend Developer</p>
+
+                    <span class="profile-member-badge">
+                        <i class="fa-solid fa-crown"></i>
+                        Free Member
+                    </span>
+                </div>
+
+                <div class="profile-user-divider"></div>
+
+                <div class="profile-user-info">
+
+                    <div>
+                        <i class="fa-regular fa-envelope"></i>
+                        <span id="sidebarEmail">steven@example.com</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="sidebarLocation">Cairo, Egypt</span>
+                    </div>
+
+                    <div>
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>Joined November 2026</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Statistics -->
+            <div class="profile-stats-card">
+
+                <h3 class="profile-section-small-title">
+                    My Overview
+                </h3>
+
+                <div class="profile-stat-item">
+                    <div class="profile-stat-icon purple">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>24</strong>
+                        <span>Total Tasks</span>
+                    </div>
+                </div>
+
+                <div class="profile-stat-item">
+                    <div class="profile-stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>18</strong>
+                        <span>Completed Tasks</span>
+                    </div>
+                </div>
+
+                <div class="profile-stat-item">
+                    <div class="profile-stat-icon orange">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+
+                    <div>
+                        <strong>5</strong>
+                        <span>Active Projects</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- RIGHT CONTENT -->
+        <main class="profile-main">
+
+            <!-- Navigation Tabs -->
+            <div class="profile-tabs">
+
+                <button type="button"
+                        class="profile-tab active"
+                        data-tab="personal">
+
+                    <i class="fa-regular fa-user"></i>
+                    Personal Information
+
+                </button>
+
+                <button type="button"
+                        class="profile-tab"
+                        data-tab="security">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Security
+
+                </button>
+
+            </div>
+
+
+            <!-- PERSONAL INFORMATION -->
+            <section class="profile-tab-content active"
+                     id="personal">
+
+                <div class="profile-content-card">
+
+                    <div class="profile-card-heading">
+                        <div>
+                            <h3>Personal Information</h3>
+
+                            <p>
+                                Update your personal details and profile information.
+                            </p>
+                        </div>
+
+                        <span class="profile-heading-icon">
+                            <i class="fa-regular fa-address-card"></i>
+                        </span>
+                    </div>
+
+
+                    <form id="profileForm">
+
+                        <div class="profile-form-grid">
+
+                            <!-- Full Name -->
+                            <div class="profile-field">
+                                <label for="fullName">
+                                    Full Name
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-regular fa-user"></i>
+
+                                    <input type="text"
+                                           id="fullName"
+                                           name="FullName"
+                                           value="Steven Sameh"
+                                           placeholder="Enter your full name"
+                                           required
+                                           maxlength="100" />
+                                </div>
+                            </div>
+
+
+                            <!-- Email -->
+                            <div class="profile-field">
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-regular fa-envelope"></i>
+
+                                    <input type="email"
+                                           id="email"
+                                           name="Email"
+                                           value="steven@example.com"
+                                           placeholder="Enter your email"
+                                           required />
+                                </div>
+                            </div>
+
+
+                            <!-- Phone -->
+                            <div class="profile-field">
+                                <label for="phone">
+                                    Phone Number
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    <input type="tel"
+                                           id="phone"
+                                           name="Phone"
+                                           value="+20 100 000 0000"
+                                           placeholder="Enter your phone number" />
+                                </div>
+                            </div>
+
+
+                            <!-- Job -->
+                            <div class="profile-field">
+                                <label for="jobTitle">
+                                    Job Title
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-briefcase"></i>
+
+                                    <input type="text"
+                                           id="jobTitle"
+                                           name="JobTitle"
+                                           value="Frontend Developer"
+                                           placeholder="Enter your job title"
+                                           maxlength="100" />
+                                </div>
+                            </div>
+
+
+                            <!-- Location -->
+                            <div class="profile-field">
+                                <label for="location">
+                                    Location
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-location-dot"></i>
+
+                                    <input type="text"
+                                           id="location"
+                                           name="Location"
+                                           value="Cairo, Egypt"
+                                           placeholder="Enter your location"
+                                           maxlength="100" />
+                                </div>
+                            </div>
+
+
+                            <!-- Website -->
+                            <div class="profile-field">
+                                <label for="website">
+                                    Website
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-globe"></i>
+
+                                    <input type="url"
+                                           id="website"
+                                           name="Website"
+                                           placeholder="https://example.com" />
+                                </div>
+                            </div>
+
+
+                            <!-- Bio -->
+                            <div class="profile-field full-width">
+                                <label for="bio">
+                                    About Me
+                                </label>
+
+                                <textarea id="bio"
+                                          name="Bio"
+                                          rows="4"
+                                          maxlength="500"
+                                          placeholder="Tell us a little about yourself...">Passionate developer interested in building modern web applications and creating great user experiences.</textarea>
+
+                                <div class="profile-character-count">
+                                    <span id="bioCount">0</span>/500
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Form Actions -->
+                        <div class="profile-form-actions">
+
+                            <button type="button"
+                                    class="profile-btn profile-btn-secondary"
+                                    id="resetProfile">
+
+                                Cancel
+                            </button>
+
+                            <button type="submit"
+                                    class="profile-btn profile-btn-primary"
+                                    id="saveProfile">
+
+                                <i class="fa-solid fa-check"></i>
+                                Save Changes
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- Account Information -->
+                <div class="profile-content-card profile-account-card">
+
+                    <div class="profile-card-heading">
+                        <div>
+                            <h3>Account Information</h3>
+
+                            <p>
+                                General information about your TaskFlow account.
+                            </p>
+                        </div>
+
+                        <span class="profile-heading-icon">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </span>
+                    </div>
+
+                    <div class="profile-account-info">
+
+                        <div>
+                            <span>Account Type</span>
+                            <strong>Free Plan</strong>
+                        </div>
+
+                        <div>
+                            <span>Account Status</span>
+                            <strong class="account-active">
+                                <i class="fa-solid fa-circle-check"></i>
+                                Active
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Member Since</span>
+                            <strong>November 2026</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SECURITY -->
+            <section class="profile-tab-content"
+                     id="security">
+
+                <div class="profile-content-card">
+
+                    <div class="profile-card-heading">
+                        <div>
+                            <h3>Password & Security</h3>
+
+                            <p>
+                                Keep your account secure by updating your password.
+                            </p>
+                        </div>
+
+                        <span class="profile-heading-icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                    </div>
+
+
+                    <form id="passwordForm">
+
+                        <div class="profile-form-grid security-grid">
+
+                            <div class="profile-field full-width">
+                                <label for="currentPassword">
+                                    Current Password
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-lock"></i>
+
+                                    <input type="password"
+                                           id="currentPassword"
+                                           placeholder="Enter current password"
+                                           required />
+
+                                    <button type="button"
+                                            class="password-toggle"
+                                            data-target="currentPassword">
+
+                                        <i class="fa-regular fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-field full-width">
+                                <label for="newPassword">
+                                    New Password
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-key"></i>
+
+                                    <input type="password"
+                                           id="newPassword"
+                                           placeholder="Enter new password"
+                                           minlength="8"
+                                           required />
+
+                                    <button type="button"
+                                            class="password-toggle"
+                                            data-target="newPassword">
+
+                                        <i class="fa-regular fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            <div class="profile-field full-width">
+                                <label for="confirmPassword">
+                                    Confirm New Password
+                                </label>
+
+                                <div class="profile-input-wrapper">
+                                    <i class="fa-solid fa-key"></i>
+
+                                    <input type="password"
+                                           id="confirmPassword"
+                                           placeholder="Confirm your new password"
+                                           minlength="8"
+                                           required />
+
+                                    <button type="button"
+                                            class="password-toggle"
+                                            data-target="confirmPassword">
+
+                                        <i class="fa-regular fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="password-requirements">
+                            <strong>Password requirements</strong>
+
+                            <p>
+                                <i class="fa-solid fa-check"></i>
+                                At least 8 characters.
+                            </p>
+
+                            <p>
+                                <i class="fa-solid fa-check"></i>
+                                Use a combination of letters and numbers.
+                            </p>
+                        </div>
+
+
+                        <div class="profile-form-actions">
+
+                            <button type="reset"
+                                    class="profile-btn profile-btn-secondary">
+
+                                Cancel
+                            </button>
+
+                            <button type="submit"
+                                    class="profile-btn profile-btn-primary">
+
+                                <i class="fa-solid fa-shield-halved"></i>
+                                Update Password
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- Security Notice -->
+                <div class="profile-security-notice">
+
+                    <div class="profile-notice-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+                        <strong>Your account security matters</strong>
+
+                        <p>
+                            Never share your password with anyone.
+                            Use a strong and unique password for your account.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Toast Notification -->
+    <div class="profile-toast" id="profileToast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Changes completed successfully.</span>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/Profile.js"
+            asp-append-version="true"></script>
+}
