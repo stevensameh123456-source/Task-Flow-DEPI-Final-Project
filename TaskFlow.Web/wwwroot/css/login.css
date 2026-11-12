@@ -1,0 +1,583 @@
+﻿
+/* =========================================
+   TaskFlow Login - Main Styles
+========================================= */
+
+:root {
+    --tf-primary: #6366f1;
+    --tf-secondary: #8b5cf6;
+    --tf-gradient: linear-gradient( 135deg, #6366f1 0%, #8b5cf6 100% );
+    --tf-font: 'Inter', sans-serif;
+    --tf-transition: all 0.3s ease;
+}
+
+/* =========================================
+   Light Theme
+========================================= */
+
+[data-bs-theme="light"] {
+    --tf-bg: #f5f6ff;
+    --tf-surface: #ffffff;
+    --tf-field: #f8f9fd;
+    --tf-text: #17172b;
+    --tf-muted: #85889b;
+    --tf-border: #e9eaf3;
+    --tf-shadow: 0 20px 70px rgba(50, 45, 100, 0.10);
+}
+
+/* =========================================
+   Dark Theme
+========================================= */
+
+[data-bs-theme="dark"] {
+    --tf-bg: #0b0d1a;
+    --tf-surface: #15182a;
+    --tf-field: #1d2035;
+    --tf-text: #f4f4ff;
+    --tf-muted: #969bb5;
+    --tf-border: #292d45;
+    --tf-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   Global
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body.tf-auth-page {
+    font-family: var(--tf-font);
+    min-height: 100vh;
+    margin: 0;
+    background: var(--tf-bg);
+    color: var(--tf-text);
+    transition: background 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   Background
+========================================= */
+
+.tf-background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.tf-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(99, 102, 241, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.035) 1px, transparent 1px);
+    background-size: 45px 45px;
+    mask-image: linear-gradient( to bottom, black, transparent 90% );
+}
+
+.tf-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.35;
+    animation: tf-float 12s ease-in-out infinite;
+}
+
+.tf-blob-1 {
+    width: 400px;
+    height: 400px;
+    background: #6366f1;
+    top: -180px;
+    left: -120px;
+}
+
+.tf-blob-2 {
+    width: 420px;
+    height: 420px;
+    background: #a855f7;
+    bottom: -200px;
+    right: -120px;
+    animation-delay: -4s;
+}
+
+.tf-blob-3 {
+    width: 250px;
+    height: 250px;
+    background: #38bdf8;
+    top: 45%;
+    right: 15%;
+    opacity: 0.18;
+    animation-delay: -7s;
+}
+
+@keyframes tf-float {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -25px);
+    }
+}
+
+/* =========================================
+   Main Wrapper
+========================================= */
+
+.tf-auth-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 40px;
+}
+
+/* =========================================
+   Login Card
+========================================= */
+
+.tf-auth-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 38px 38px 28px;
+    background: var(--tf-surface);
+    border: 1px solid var(--tf-border);
+    border-radius: 24px;
+    box-shadow: var(--tf-shadow);
+    animation: tf-appear 0.7s ease both;
+    transition: var(--tf-transition);
+}
+
+@keyframes tf-appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================
+   Header
+========================================= */
+
+.tf-auth-header {
+    margin-bottom: 30px;
+}
+
+.tf-logo {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: var(--tf-gradient);
+    color: white;
+    font-size: 25px;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+}
+
+.tf-brand {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+    color: var(--tf-text);
+}
+
+    .tf-brand span {
+        background: var(--tf-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+.tf-auth-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--tf-text);
+}
+
+.tf-auth-header p {
+    color: var(--tf-muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+/* =========================================
+   Form
+========================================= */
+
+.tf-form-group {
+    margin-bottom: 21px;
+}
+
+    .tf-form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 9px;
+        color: var(--tf-text);
+    }
+
+.tf-input-wrapper {
+    position: relative;
+}
+
+    .tf-input-wrapper .input-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        color: var(--tf-muted);
+        z-index: 2;
+        transition: var(--tf-transition);
+    }
+
+    .tf-input-wrapper .form-control {
+        height: 51px;
+        padding: 10px 45px 10px 45px;
+        border-radius: 12px;
+        background: var(--tf-field);
+        border: 1.5px solid var(--tf-border);
+        color: var(--tf-text);
+        font-size: 13px;
+        box-shadow: none;
+        transition: var(--tf-transition);
+    }
+
+        .tf-input-wrapper .form-control::placeholder {
+            color: var(--tf-muted);
+            opacity: 0.75;
+        }
+
+        .tf-input-wrapper .form-control:focus {
+            background: var(--tf-surface);
+            border-color: var(--tf-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+        }
+
+    .tf-input-wrapper:focus-within .input-icon {
+        color: var(--tf-primary);
+    }
+
+    .tf-input-wrapper .form-control.is-invalid {
+        border-color: #ef4444;
+        background-image: none;
+    }
+
+.tf-error {
+    color: #ef4444;
+    font-size: 11px;
+    margin-top: 6px;
+    min-height: 0;
+}
+
+.tf-eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--tf-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--tf-transition);
+}
+
+    .tf-eye:hover {
+        color: var(--tf-primary);
+        background: rgba(99, 102, 241, 0.09);
+    }
+
+/* =========================================
+   Remember / Forgot Password
+========================================= */
+
+.tf-form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 5px 0 25px;
+    font-size: 12px;
+}
+
+.tf-remember {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--tf-muted);
+    cursor: pointer;
+    user-select: none;
+}
+
+    .tf-remember input {
+        display: none;
+    }
+
+.tf-custom-checkbox {
+    width: 17px;
+    height: 17px;
+    border: 1.5px solid var(--tf-muted);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--tf-transition);
+}
+
+    .tf-custom-checkbox i {
+        font-size: 9px;
+        color: white;
+        opacity: 0;
+    }
+
+.tf-remember input:checked + .tf-custom-checkbox {
+    background: var(--tf-primary);
+    border-color: var(--tf-primary);
+}
+
+    .tf-remember input:checked + .tf-custom-checkbox i {
+        opacity: 1;
+    }
+
+.tf-remember input:focus-visible + .tf-custom-checkbox {
+    outline: 3px solid rgba(99, 102, 241, 0.25);
+}
+
+.tf-forgot {
+    color: var(--tf-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--tf-transition);
+}
+
+    .tf-forgot:hover {
+        color: var(--tf-secondary);
+    }
+
+/* =========================================
+   Submit Button
+========================================= */
+
+.tf-submit-btn {
+    width: 100%;
+    height: 51px;
+    border: none;
+    border-radius: 12px;
+    background: var(--tf-gradient);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+    transition: var(--tf-transition);
+}
+
+    .tf-submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(99, 102, 241, 0.35);
+    }
+
+    .tf-submit-btn:active {
+        transform: translateY(0);
+    }
+
+    .tf-submit-btn:disabled {
+        opacity: 0.75;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .tf-submit-btn .btn-text i {
+        margin-left: 9px;
+        transition: transform 0.3s ease;
+    }
+
+    .tf-submit-btn:hover .btn-text i {
+        transform: translateX(4px);
+    }
+
+    .tf-submit-btn .btn-loading {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+/* =========================================
+   Register
+========================================= */
+
+.tf-register {
+    text-align: center;
+    margin-top: 26px;
+    font-size: 12px;
+    color: var(--tf-muted);
+}
+
+    .tf-register a {
+        margin-left: 4px;
+        color: var(--tf-primary);
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .tf-register a:hover {
+            text-decoration: underline;
+        }
+
+/* =========================================
+   Footer
+========================================= */
+
+.tf-auth-footer {
+    border-top: 1px solid var(--tf-border);
+    margin-top: 25px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--tf-muted);
+}
+
+/* =========================================
+   Server Error
+========================================= */
+
+.tf-server-error {
+    border-radius: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   Theme Toggle
+========================================= */
+
+.tf-theme-btn {
+    position: fixed;
+    top: 25px;
+    right: 28px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    border: 1px solid var(--tf-border);
+    background: var(--tf-surface);
+    color: var(--tf-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(30, 30, 70, 0.08);
+    transition: var(--tf-transition);
+}
+
+    .tf-theme-btn:hover {
+        transform: translateY(-3px) rotate(8deg);
+        border-color: var(--tf-primary);
+        color: var(--tf-primary);
+        box-shadow: 0 8px 22px rgba(99, 102, 241, 0.15);
+    }
+
+    .tf-theme-btn i {
+        position: absolute;
+        font-size: 19px;
+        transition: all 0.4s ease;
+    }
+
+    .tf-theme-btn .sun-icon {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+
+    .tf-theme-btn .moon-icon {
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.5);
+    }
+
+[data-bs-theme="dark"] .tf-theme-btn .sun-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+[data-bs-theme="dark"] .tf-theme-btn .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+}
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 576px) {
+
+    .tf-auth-wrapper {
+        padding: 85px 16px 30px;
+    }
+
+    .tf-auth-card {
+        max-width: 100%;
+        padding: 30px 23px 24px;
+        border-radius: 20px;
+    }
+
+    .tf-logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .tf-brand {
+        font-size: 25px;
+    }
+
+    .tf-auth-header h2 {
+        font-size: 20px;
+    }
+
+    .tf-theme-btn {
+        top: 16px;
+        right: 16px;
+        width: 43px;
+        height: 43px;
+    }
+
+    .tf-form-options {
+        font-size: 11px;
+    }
+}
+
+/* =========================================
+   Reduced Motion
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
